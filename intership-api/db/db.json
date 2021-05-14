@@ -1,0 +1,70 @@
+{
+  "user": {
+    "login": "user",
+    "password": "123"
+  },
+  "organization": [
+    {
+      "id": 1,
+      "name": "Organization 1",
+      "address": "1 street",
+      "INN": 1234567890
+    },
+    {
+      "id": 2,
+      "name": "org 2",
+      "address": "kirov",
+      "INN": 123124123
+    }
+  ],
+  "division": [
+    {
+      "id": 1,
+      "id_organization": 1,
+      "name": "Division 1",
+      "phone": 1234
+    },
+    {
+      "id": 2,
+      "id_organization": 1,
+      "name": "Division 2",
+      "phone": 2134
+    },
+    {
+      "id": 3,
+      "id_organization": 2,
+      "name": "div2",
+      "phone": 2324242
+    }
+  ],
+  "employee": [
+    {
+      "id": 1,
+      "id_division": 1,
+      "FIO": "QWE RTY",
+      "address": "street 23",
+      "position": "position 1"
+    },
+    {
+      "id": 2,
+      "id_division": 2,
+      "FIO": "Unknown1 Unknown Unknown",
+      "address": "street 123",
+      "position": "Position 2"
+    },
+    {
+      "id": 3,
+      "id_division": 2,
+      "FIO": "ZXC ASD",
+      "address": "street qwe",
+      "position": "position 432"
+    },
+    {
+      "id": 4,
+      "id_division": 3,
+      "FIO": "erik cartman",
+      "address": "23 grove street",
+      "position": "cj"
+    }
+  ]
+}
