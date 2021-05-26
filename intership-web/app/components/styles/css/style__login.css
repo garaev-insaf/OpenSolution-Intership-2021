@@ -1,0 +1,504 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #ecedf0;
+  }
+  
+  .body-sign {
+    display: table;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 0 15px;
+    width: 100%;
+  }
+  
+  .body-sign .center-sign {
+    vertical-align: middle;
+    display: table-cell;
+  }
+  
+  .body-sign .center-sign .card-sign {
+    background: transparent;
+  }
+  
+  .body-sign .center-sign .card-sign-title {
+    margin-left: auto;
+    border-radius: 5px 5px 0 0;
+    width: 100px;
+    height: 68px;
+    background-color: #0088cc;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .body-sign .center-sign .card-sign-title .title {
+    letter-spacing: -1px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 42px;
+    text-transform: uppercase;
+    color: #FFF;
+    padding: 13px 17px;
+    vertical-align: bottom;
+  }
+  
+  .body-sign .center-sign .card-sign .card-body {
+    background: #FFF;
+    border-top: 5px solid #0088cc;
+    padding: 33px 33px 15px 33px;
+    width: 100%;
+    height: 445px;
+    border-radius: 5px 0 5px 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .body-sign .center-sign .card-sign .card-body .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .body-sign .center-sign .card-sign .card-body .form-group label {
+    display: inline-block;
+    margin-bottom: 0.5rem !important;
+    text-align: left;
+    color: #777;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 22px;
+    margin: 0;
+    font-size: 13px;
+  }
+  
+  .form-group .pwd-title .pwd-lost {
+    float: right;
+    outline: none;
+    color: #0088cc;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 22px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 300;
+  }
+  
+  .form-group .input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    width: 100%;
+  }
+  
+  .form-group .input-group .form-control {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 4px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
+    transition: -webkit-box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  }
+  
+  .form-group .input-group .form-control:focus {
+    outline: none;
+    border-color: #6aa8eb;
+    -webkit-box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+            box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+  }
+  
+  .form-group .input-group .input-group-append {
+    width: 40px;
+    height: 48px;
+    background-color: #e9ecef;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: -1px;
+    border: 1px solid #ced4da;
+    border-radius: 0px 4px 4px 0px;
+  }
+  
+  .bot-cont {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .bot-cont .checkbox-cont {
+    position: relative;
+    padding: 0 0 0 25px;
+    margin-top: 8px;
+    line-height: 22px;
+    font-weight: 300;
+    font-size: 13px;
+    color: #777;
+  }
+  
+  .bot-cont .checkbox-cont #RememberMe, .bot-cont .checkbox-cont #AgreeTerms {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  .bot-cont .checkbox-cont label {
+    cursor: pointer;
+    margin-bottom: 0;
+    text-align: left;
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .bot-cont .submit-cont {
+    line-height: 22px;
+    font-size: 14px;
+    margin-left: auto;
+    margin-top: 0.5rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+  }
+  
+  .bot-cont .submit-cont .btn-primary {
+    width: 70px;
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 0.25rem;
+    background-color: #0088cc;
+    border-color: #0088cc;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1.5;
+    border: none;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  }
+  
+  .bot-cont .submit-cont .btn-primary:focus {
+    outline: none;
+    border-color: #6aa8eb;
+    -webkit-box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+            box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+  }
+  
+  .devider-or {
+    display: block;
+    font-size: 12px;
+    font-size: 0.75rem;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 22px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #777;
+    width: 100%;
+  }
+  
+  .devider-or span {
+    color: #CCC;
+    position: relative;
+    z-index: 3;
+  }
+  
+  .devider-or::before {
+    background-color: #fff;
+    content: '';
+    height: 10px;
+    left: 50%;
+    position: absolute;
+    margin: -5px 0 0 -20px;
+    top: 50%;
+    width: 40px;
+    z-index: 2;
+  }
+  
+  .devider-or::after {
+    border-bottom: 1px solid #DADADA;
+    content: '';
+    display: block;
+    left: 10%;
+    position: absolute;
+    top: 47%;
+    width: 81%;
+    z-index: 1;
+  }
+  
+  .signin-with {
+    width: 100%;
+    text-align: center;
+    line-height: 22px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: #777;
+    font-weight: 300;
+  }
+  
+  .signin-with .btn {
+    width: 158px;
+    height: 40px;
+    display: inline-block;
+    color: #FFF;
+    font-weight: 400;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-shadow: 0 -1px 0 black;
+    background: #3B5998;
+    border: 1px solid #37538D;
+    padding: 0.47rem 0.75rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    outline: none;
+    text-decoration: none;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+  }
+  
+  .link-up {
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
+    color: #777;
+    font-weight: 400;
+    text-align: center;
+    color: #777;
+    line-height: 24px;
+    margin: 0 0 20px;
+  }
+  
+  .link-up a {
+    color: #0088cc;
+    text-decoration: none;
+  }
+  
+  .cb-signup {
+    height: 537px !important;
+  }
+  
+  .cst-signup {
+    width: 127px !important;
+  }
+  
+  .cs-signup .bot-conteiner {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    width: 100%;
+  }
+  
+  .cs-signup .bot-conteiner .pass .form-control {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 4px !important;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+  }
+  
+  .cs-signup .bot-conteiner .pass:first-child {
+    padding-right: 15px;
+  }
+  
+  .cs-signup .bot-conteiner .pass:last-child {
+    padding-left: 15px;
+  }
+  
+  .btn-signup {
+    background-color: #0088cc !important;
+    width: 150px !important;
+    height: 50px !important;
+    font-size: 12px;
+  }
+  
+  .cc-signup {
+    width: 50%;
+  }
+  
+  @media (max-width: 576px) {
+    .card-body {
+      height: 100% !important;
+    }
+    .bot-conteiner {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      width: 100%;
+    }
+    .bot-conteiner .pass {
+      margin-bottom: 1rem;
+      width: 100%;
+      padding: 0 !important;
+    }
+    .bot-conteiner .pass .form-control {
+      position: relative;
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto;
+      width: 100%;
+      height: calc(1.5em + 1rem + 2px);
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      border-radius: 4px;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
+      transition: -webkit-box-shadow 0.15s ease-in-out;
+      transition: box-shadow 0.15s ease-in-out;
+      transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    }
+    .bot-conteiner .pass .form-control:focus {
+      outline: none;
+      border-color: #6aa8eb;
+      -webkit-box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+              box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+    }
+    .bot-cont {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      width: 100%;
+    }
+    .checkbox-cont {
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+    }
+  }
+  
+  .cst-recover {
+    width: 200px !important;
+  }
+  
+  .cb-recover {
+    height: 100% !important;
+  }
+  
+  .alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    text-align: left;
+    color: #777;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 13px;
+  }
+  
+  .fc-email {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .iga-recover {
+    z-index: 1;
+    height: 48px !important;
+    width: 90px !important;
+  }
+  
+  .btn-recover {
+    z-index: 2;
+    position: relative;
+    width: 90px;
+    height: 48px;
+    padding: 8px 16px;
+    border-radius: 0.25rem;
+    background-color: #0088cc;
+    border-color: #0088cc;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 13px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1.5;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #0088cc;
+    margin-left: -1px !important;
+    margin-top: -1px !important;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  }
+  
+  .btn-recover:focus {
+    outline: none;
+    border-color: #6aa8eb;
+    -webkit-box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+            box-shadow: 0 0 10px rgba(85, 172, 238, 0.5);
+  }
+  /*# sourceMappingURL=style.min.css.map */

@@ -1,11 +1,3 @@
-// я не знаю какой способ стилизации в проектах самый оптимальный
-// поэтому решил прибегнуть создании объект-переменную стилей
-
-// вопрос, если у меня в фолдере componnts будет отдельный файл стилизации компонентов
-// и когда я компоненту буду использоваться в app.jsx не слетит ли path? или будет достаточно его и туда импортировать?
-
-// другой вопрос: если у меня в фолдере уровня выше будет отдельный фолдер со стлизиция компонентов
-// и когда я компоненту буду использовать в app.jsx не слетит ли path? или будет достаточно его и туда импортировать?
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -16,7 +8,22 @@ import "../components/styles/sass/login.sass";
 
 class LogInForm extends React.Component {
 
-    logClick = () => console.log('обработать нажатие на кнопку - вывести в консоль.');
+    constructor(props) {
+        // super(props);
+        this.state = {value: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+    
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    
+      handleSubmit(event) {
+        console.log('Логин: ' + this.state.value);
+        event.preventDefault();
+      }
 
     render() {
       return (
@@ -29,13 +36,11 @@ class LogInForm extends React.Component {
                         </h2>
                     </div>
                     <div className="card-body cb-signup">
-                        <form action="">
+                        <form action="" onSubmit={this.handleSubmit}>
                             <div className="form-group login">
-                                <label htmlFor="">Логин</label>
+                                <label htmlFor="" type="text">Логин</label>
                                 <div className="input-group">
-                                    <input name="login" type="text" className="form-control"/>
-                                    {/* <span className="input-group-append">
-                                    </span> */}
+                                    <input name="login" type="text" className="form-control" value={this.state.value} onChange={this.handleChange}/>
                                 </div>
                             </div>
                             <div className="form-group pwd">
@@ -44,16 +49,16 @@ class LogInForm extends React.Component {
                                     <a href="#" className="pwd-lost">Забыли пароль?</a>
                                 </div>
                                 <div className="input-group">
-                                    <input type="pwd" className="form-control" />
+                                    <input type="password" className="form-control" />
                                 </div>
                             </div>
                             <div className="bot-cont">
                                 <div className="checkbox-cont">
                                     <input id="AgreeTerms" name="agreeTerms" type="checkbox" />
-                                    <label htmlFor="AgreeTerms"></label>
+                                    <label htmlFor="AgreeTerms">Запомнить меня</label>
                                 </div>
                                 <div className="submit-cont">
-                                    <button className="btn-primary" type="sumbit" onClick={this.logClick}>Войти</button>
+                                    <input className="btn-primary" type="submit" value="Войти" />
                                 </div>
                             </div>
                             <p className="link-up">Don't have an account yet? <a href="#">Зарегистрироваться!</a></p>
