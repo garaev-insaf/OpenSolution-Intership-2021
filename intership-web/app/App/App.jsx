@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 import { IActionType } from "../common";
 import { Actions } from "../Actions/Actions";
 import { IStoreState } from "../Reducers/Reducers";
+import { LogInForm } from "../components/login";
 import "./App.css";
 
 /**
@@ -42,11 +43,16 @@ class App extends React.Component /*<TProps, {}> */ {
    */
   handleClick = () => this.props.actions.onClick(2);
 
+  
+
+
   /**
    * Обработчик авторизации пользователя.
    */
   handleLogin = () =>
-    this.props.actions.onLogin({ name: "admin", password: "1" });
+    this.props.actions.onLogin({
+      loginData: { login: "user", password: "123" }
+  });
 
   /**
    * Обработчик выхода из системы.
@@ -56,41 +62,42 @@ class App extends React.Component /*<TProps, {}> */ {
   render() {
     const { loginStatus, waitingForLogin, countResult, counting } = this.props;
     return (
-      <div>
-        <h3>Boilerplate</h3>
-        {waitingForLogin ? (
-          <p>Авторизация...</p>
-        ) : loginStatus ? (
-          <p>Login success</p>
-        ) : (
-          <p>Logged out</p>
-        )}
-        <input
-          className="btn btn-outline-secondary"
-          disabled={waitingForLogin}
-          type="button"
-          value="+"
-          onClick={this.handleClick}
-        />
-        <input
-          className="btn btn-outline-primary"
-          disabled={waitingForLogin}
-          type="button"
-          value="login"
-          onClick={this.handleLogin}
-        />
-        <input
-          className="btn btn-outline-warning"
-          disabled={waitingForLogin || counting}
-          type="button"
-          value="logout"
-          onClick={this.handleLogout}
-        />
-        {counting && <p>Подсчет...</p>}
-        {!counting && countResult > 0 && (
-          <p className="red-color">{countResult}</p>
-        )}
-      </div>
+      <LogInForm/>
+      // <div>
+      //   <h3>Boilerplate</h3>
+      //   {waitingForLogin ? (
+      //     <p>Авторизация...</p>
+      //   ) : loginStatus ? (
+      //     <p>Login success</p>
+      //   ) : (
+      //     <p>Logged out</p>
+      //   )}
+      //   <input
+      //     className="btn btn-outline-secondary"
+      //     disabled={waitingForLogin}
+      //     type="button"
+      //     value="+"
+      //     onClick={this.handleClick}
+      //   />
+      //   <input
+      //     className="btn btn-outline-primary"
+      //     disabled={waitingForLogin}
+      //     type="button"
+      //     value="login"
+      //     onClick={this.handleLogin}
+      //   />
+      //   <input
+      //     className="btn btn-outline-warning"
+      //     disabled={waitingForLogin || counting}
+      //     type="button"
+      //     value="logout"
+      //     onClick={this.handleLogout}
+      //   />
+      //   {counting && <p>Подсчет...</p>}
+      //   {!counting && countResult > 0 && (
+      //     <p className="red-color">{countResult}</p>
+      //   )}
+      // </div>
     );
   }
 }
