@@ -4,11 +4,11 @@
  * LOGOUT - Отмена авторизации.
  * CLICK - Подсчёт чего-либо для примера.
  */
-/* export enum ActionTypes {
-    LOGIN = 'ACTION_LOGIN',
-    LOGOUT = 'ACTION_LOGOUT',
-    CLICK = 'ACTION_CLICK',
-}*/
+// export enum ActionTypes {
+//     LOGIN = 'ACTION_LOGIN',
+//     LOGOUT = 'ACTION_LOGOUT',
+//     CLICK = 'ACTION_CLICK',
+// }
 export const ActionTypes = {
     LOGIN: 'ACTION_LOGIN',
     LOGOUT: 'ACTION_LOGOUT',
@@ -21,11 +21,11 @@ export const ActionTypes = {
  * SUCCESS - Действие завершилось успешно.
  * FAILURE - Действие завершилось с ошибкой.
  */
-/*export enum AsyncActionTypes {
-    BEGIN = '_BEGIN',
-    SUCCESS = '_SUCCESS',
-    FAILURE = '_FAILURE',
-}*/
+// export enum AsyncActionTypes {
+//     BEGIN = '_BEGIN',
+//     SUCCESS = '_SUCCESS',
+//     FAILURE = '_FAILURE',
+// }
 export const AsyncActionTypes = {
     BEGIN: '_BEGIN',
     SUCCESS: '_SUCCESS',
