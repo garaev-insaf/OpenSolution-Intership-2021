@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { Division } from "../components/Division/Division";
 import { Organization } from "../components/Organization/Organization";
 import { Employee } from "../components/Employee/Employee";
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
 import { loginStatus, waitingForLogin, countResult, counting } from "../components/login";
 import "./App.css";
 
@@ -81,38 +81,71 @@ class App extends React.Component /*<TProps, {}> */ {
 			// 	</div>
 			// ),
 			(
-				// <div>
-				// 	{/* { pagesList.map((auth) => <button key={auth} type='submit' onClick={() => setPageType("/auth")}>{auth}</button>) } */}
-				// 	{console.log(history)}
-				// 	{console.log(appStore)}
-				// </div>,
-				<Router>
-					<Switch>
+			// <div>
+			// 	{/* { pagesList.map((auth) => <button key={auth} type='submit' onClick={() => setPageType("/auth")}>{auth}</button>) } */}
+			// 	{console.log(history)}
+			// 	{console.log(appStore)}
+			// </div>,
+			<Router>
+				<Switch>
 					{/* <Route path="/">
-							<LogInForm />
+						<LogInForm />
 					</Route> */}
 					<Route
-							exact
-							path="/"
-							render={() => {
-								return loginStatus ? (
-									<Redirect to="/organization" />
-								) : (
-									<Route path="/" component={LogInForm}/>
-								);
-							}}
-						/>
-						<Route path="/employee">
-							<Employee />
-						</Route>
-						<Route path="/division">
-							<Division />
-						</Route>
-						<Route path="/organization">
-							<Organization />
-						</Route>
-					</Switch>
-				</Router>
+						exact
+						path="/"
+						render={() => {
+							return loginStatus ? (
+								<Redirect to="/organization" />
+							) : (
+								<Route path="/" component={LogInForm} />
+							);
+						}}
+					/>
+					<Route
+						exact
+						path="/employee"
+						render={() => {
+							return loginStatus ? (
+								<Route path="/employee" component={Employee} />
+							) : (
+								<Redirect to="/" />
+							);
+						}}
+					/>
+					<Route
+						exact
+						path="/organization"
+						render={() => {
+							return loginStatus ? (
+								<Route path="/organization" component={Organization} />
+							) : (
+								<Redirect to="/" />
+							);
+						}}
+					/>
+					<Route
+						exact
+						path="/division"
+						render={() => {
+							return loginStatus ? (
+								<Route path="/division" component={Division} />
+							) : (
+								<Redirect to="/" />
+							);
+						}}
+					/>
+					<Route exact path="/employee">
+						<Employee />
+					</Route>
+					<Route exact path="/division">
+						<Division />
+					</Route>
+					<Route exact path="/organization">
+						<Organization />
+					</Route>
+				</Switch>
+			</Router>
 			)
 		);
 	}
