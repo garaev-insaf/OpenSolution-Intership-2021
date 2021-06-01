@@ -1,10 +1,17 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { IActionType } from "../common";
 import { Actions } from "../Actions/Actions";
 import { IStoreState } from "../Reducers/Reducers";
 import { LogInForm } from "../components/login";
+import React, { useState } from "react";
+import { Division } from "../components/Division/Division";
+import { Organization } from "../components/Organization/Organization";
+import { Employee } from "../components/Employee/Employee";
+import { createBrowserHistory } from "history";
+import { loginStatus, waitingForLogin, countResult, counting } from "../components/login";
 import "./App.css";
 
 /**
@@ -38,85 +45,128 @@ import "./App.css";
  * Основной класс приложения.
  */
 class App extends React.Component /*<TProps, {}> */ {
-  /**
-   * Обработчик запуска вычисления.
-   */
-  handleClick = () => this.props.actions.onClick(2);
+	constructor(props) {
+		super(props);
+		this.state = { redirect: null };
+	}
 
-  
+	/**
+	 * Обработчик запуска вычисления.
+	 */
+	handleClick = () => this.props.actions.onClick(2);
+	/**
+	 * Обработчик выхода из системы.
+	 */
+	handleLogout = () => this.props.actions.onLogout();
 
-
-  /**
-   * Обработчик авторизации пользователя.
-   */
-  handleLogin = () =>
-    this.props.actions.onLogin({
-      loginData: { login: "user", password: "123" }
-  });
-
-  /**
-   * Обработчик выхода из системы.
-   */
-  handleLogout = () => this.props.actions.onLogout();
-
-  render() {
-    const { loginStatus, waitingForLogin, countResult, counting } = this.props;
-    return (
-      <LogInForm/>
-      // <div>
-      //   <h3>Boilerplate</h3>
-      //   {waitingForLogin ? (
-      //     <p>Авторизация...</p>
-      //   ) : loginStatus ? (
-      //     <p>Login success</p>
-      //   ) : (
-      //     <p>Logged out</p>
-      //   )}
-      //   <input
-      //     className="btn btn-outline-secondary"
-      //     disabled={waitingForLogin}
-      //     type="button"
-      //     value="+"
-      //     onClick={this.handleClick}
-      //   />
-      //   <input
-      //     className="btn btn-outline-primary"
-      //     disabled={waitingForLogin}
-      //     type="button"
-      //     value="login"
-      //     onClick={this.handleLogin}
-      //   />
-      //   <input
-      //     className="btn btn-outline-warning"
-      //     disabled={waitingForLogin || counting}
-      //     type="button"
-      //     value="logout"
-      //     onClick={this.handleLogout}
-      //   />
-      //   {counting && <p>Подсчет...</p>}
-      //   {!counting && countResult > 0 && (
-      //     <p className="red-color">{countResult}</p>
-      //   )}
-      // </div>
-    );
-  }
+	render() {
+		const { loginStatus, waitingForLogin, countResult, counting } = this.props;
+		const history = createBrowserHistory();
+		// const pagesList = ["auth", "organization", "division", "employee"];
+		// const defaultPage = "/auth";
+		// const [pageType, setPageType] = this.setState(defaultPage);
+		// if (this.state.redirect) {
+		// 	return <Redirect to={this.state.redirect}/>
+		// }
+		return (
+			// (
+			// 	<div className="main">
+			// 		{/* <Router>
+			// 			<Route exact path="/">
+			// 				{loginStatus ? <Redirect to="/organization" /> : <LogInForm />}
+			// 				{console.log(loginStatus)}
+			// 			</Route>
+			// 		</Router> */}
+			// 		{/* {waitingForLogin ? <LogInForm /> : loginStatus ? this.setState({redirect:""}) : <LogInForm />} */}
+			// 	</div>
+			// ),
+			(
+			// <div>
+			// 	{/* { pagesList.map((auth) => <button key={auth} type='submit' onClick={() => setPageType("/auth")}>{auth}</button>) } */}
+			// 	{console.log(history)}
+			// 	{console.log(appStore)}
+			// </div>,
+			<Router>
+				<Switch>
+					{/* <Route path="/">
+						<LogInForm />
+					</Route> */}
+					<Route
+						exact
+						path="/"
+						render={() => {
+							return loginStatus ? (
+								<Redirect to="/organization" />
+							) : (
+								<Route path="/" component={LogInForm} />
+							);
+						}}
+					/>
+					<Route
+						exact
+						path="/employee"
+						render={() => {
+							return loginStatus ? (
+								<Route path="/employee" component={Employee} />
+							) : (
+								<Redirect to="/" />
+							);
+						}}
+					/>
+					<Route
+						exact
+						path="/organization"
+						render={() => {
+							return loginStatus ? (
+								<Route path="/organization" component={Organization} />
+							) : (
+								<Redirect to="/" />
+							);
+						}}
+					/>
+					<Route
+						exact
+						path="/division"
+						render={() => {
+							return loginStatus ? (
+								<Route path="/division" component={Division} />
+							) : (
+								<Redirect to="/" />
+							);
+						}}
+					/>
+					<Route exact path="/employee">
+						<Employee />
+					</Route>
+					<Route exact path="/division">
+						<Division />
+					</Route>
+					<Route exact path="/organization">
+						<Organization />
+					</Route>
+				</Switch>
+			</Router>
+			)
+		);
+	}
 }
 
-function mapStateToProps(state/*: IStoreState*/)/*: IStateProps */{
-  return {
-    loginStatus: state.Example.loginStatus,
-    waitingForLogin: state.Example.loading,
-    countResult: state.Example.counter,
-    counting: state.Example.counterIsLoading
-  };
+function mapStateToProps(state /*: IStoreState*/) /*: IStateProps */ {
+	return {
+		loginStatus: state.Example.loginStatus,
+		waitingForLogin: state.Example.loading,
+		countResult: state.Example.counter,
+		counting: state.Example.counterIsLoading,
+	};
 }
 
-function mapDispatchToProps(dispatch/*: Dispatch<IActionType>*/)/*: IDispatchProps*/ {
-  return {
-    actions: new Actions(dispatch)
-  };
+function mapDispatchToProps(dispatch /*: Dispatch<IActionType>*/) /*: IDispatchProps*/ {
+	return {
+		actions: new Actions(dispatch),
+	};
 }
 
 const connectApp = connect(mapStateToProps, mapDispatchToProps)(App);
-
 export { connectApp as App };
+
+export { App };

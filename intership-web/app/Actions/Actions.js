@@ -23,6 +23,8 @@ export class Actions {
     };
 
     onLogin = (loginData/*: ILoginData*/) => {
+        var flag = 0;
+        console.log(loginData);
         this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`});
 
         const options = {
@@ -32,17 +34,29 @@ export class Actions {
             },
             body: JSON.stringify(loginData),
         };
-        fetch('http://127.0.0.1:8080/login', options)
+        fetch('http://127.0.0.1:8080/authorize', options)
             .then(response => {
+                console.log();
                 if (response.status === 200) {
-                    this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`});
+                    return response.json()
                 } else {
                     throw 'error';
                 }
             })
             .catch(error => {
                 this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`, payload: error});
-            });
+            })
+            .then(data => {
+                if (data.isLogin == true) {
+                    this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`});
+                    flag = 1;
+                    console.log("flag = 1");
+                } else {
+                    flag = 0;
+                    console.log("flag = 0");
+                }
+            })
+        // return flag;
     };
 
     onLogout = () => {

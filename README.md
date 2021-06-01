@@ -15,7 +15,7 @@
 
 method and url | request body | response body
 --- | --- | ---
-post `/authorize` | `{login: string, password: string}` |  `{ isLogin: boolean }`
+post `/authorize` | `{login: string, password: string}` |  `{ isLogin: boolean }`   
 post `/logout` |  |
 get `/organization` |  | `[{id:number, name:string, address:string, INN:number}]`
 get `/division/${organizationId}` |  | `[{id:number, id_organization:number, name:string, phone:number}]`

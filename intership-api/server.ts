@@ -15,6 +15,7 @@ export class App {
   private constructor(port: number = config.port) {
     this._app = express();
     this._port = port;
+    
 
     this._app.use(cors());
     this._app.use(express.static(config.publickDir));
