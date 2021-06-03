@@ -27,3 +27,96 @@ footer {
     display: block;
     margin: 0 auto;
 }
+.tableBlock {
+    padding: 50px;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid rgb(124, 123, 123);
+}
+
+th {
+    background-color: #0088cc;
+    color: #ffffff;
+}
+td {
+    background-color: #ffF;
+}
+.button {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 70px;
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 0.25rem;
+    background-color: #0088cc;
+    border-color: #0088cc;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1.5;
+    border: none;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.orgForm input {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    width: 180px;
+    margin-bottom: 0;
+    height: 40px;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 4px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
+    transition: -webkit-box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.Crud {
+    display: flex;
+    flex-direction: row;
+	/* justify-content: space-between; */
+    width: 100%;
+    padding: 50px;
+    flex-wrap: nowrap;
+}
+
+.OrgForm, .OrgTable {
+    width: 600px;
+    margin: 0;
+}
+.org-form-group {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.org-form-group label{
+    width: 100%;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.OrgForm {
+    float: left;
+    margin-left: 100px;
+}
+
