@@ -61,36 +61,10 @@ class App extends React.Component /*<TProps, {}> */ {
 
 	render() {
 		const { loginStatus, waitingForLogin, countResult, counting } = this.props;
-		const history = createBrowserHistory();
-		// const pagesList = ["auth", "organization", "division", "employee"];
-		// const defaultPage = "/auth";
-		// const [pageType, setPageType] = this.setState(defaultPage);
-		// if (this.state.redirect) {
-		// 	return <Redirect to={this.state.redirect}/>
-		// }
 		return (
-			// (
-			// 	<div className="main">
-			// 		{/* <Router>
-			// 			<Route exact path="/">
-			// 				{loginStatus ? <Redirect to="/organization" /> : <LogInForm />}
-			// 				{console.log(loginStatus)}
-			// 			</Route>
-			// 		</Router> */}
-			// 		{/* {waitingForLogin ? <LogInForm /> : loginStatus ? this.setState({redirect:""}) : <LogInForm />} */}
-			// 	</div>
-			// ),
 			(
-			// <div>
-			// 	{/* { pagesList.map((auth) => <button key={auth} type='submit' onClick={() => setPageType("/auth")}>{auth}</button>) } */}
-			// 	{console.log(history)}
-			// 	{console.log(appStore)}
-			// </div>,
 			<Router>
 				<Switch>
-					{/* <Route path="/">
-						<LogInForm />
-					</Route> */}
 					<Route
 						exact
 						path="/"

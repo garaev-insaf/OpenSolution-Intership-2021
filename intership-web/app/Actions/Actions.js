@@ -23,7 +23,7 @@ export class Actions {
     };
 
     onLogin = (loginData/*: ILoginData*/) => {
-        var flag = 0;
+        let flag = 0;
         console.log(loginData);
         this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`});
 
@@ -58,7 +58,35 @@ export class Actions {
             })
         // return flag;
     };
-
+    getOrganization = (page) => {
+        const options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            }
+        }
+        fetch('http://127.0.0.1:8080/organization', options)
+            .then(response => {
+                console.log(response.json());
+                if (response.status === 200) {
+                    console.log(response.json())
+                    return response.json()
+                } else {
+                    throw 'error';
+                }
+            })
+            .then(data => {
+                if (data == true) {
+                    flag = 1;
+                    console.log("flag = 1");
+                } else {
+                    flag = 0;
+                    console.log("flag = 0");
+                }
+            })
+            .catch(error => {
+            })
+    }
     onLogout = () => {
         const options = {
             method: 'POST',
