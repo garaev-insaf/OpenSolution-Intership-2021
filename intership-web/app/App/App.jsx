@@ -1,7 +1,16 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	NavLink,
+	useRouteMatch,
+	useParams,
+	Redirect,
+} from "react-router-dom";
 import { IActionType } from "../common";
 import { Actions } from "../Actions/Actions";
 import { IStoreState } from "../Reducers/Reducers";
@@ -13,37 +22,8 @@ import { Employee } from "../components/Employee/Employee";
 import { createBrowserHistory } from "history";
 import { loginStatus, waitingForLogin, countResult, counting } from "../components/login";
 import "./App.css";
+import {history} from "../Store/Store.js"
 
-/**
- * Пропсы компонента из стора.
- * @prop {boolean} loginStatus Состояние зарегистрированности пользователя.
- * @prop {boolean} waitingForLogin Ожидание завершения процедуры авторизации (завершение логина).
- * @prop {boolean} countResult Результат вычисления.
- * @prop {boolean} counting Выполнение вычисления.
- */
-// interface IStateProps{
-//     loginStatus: boolean;
-//     waitingForLogin: boolean;
-//     countResult: number;
-//     counting: boolean;
-// }
-
-/**
- * Пропсы для передачи экшенов.
- * @prop {Actions} actions Экшены для работы приложения.
- */
-// export interface IDispatchProps{
-//     actions: Actions;
-// }
-
-/**
- * Итоговые пропсы компонента
- */
-// type TProps = IStateProps & IDispatchProps;
-
-/**
- * Основной класс приложения.
- */
 class App extends React.Component /*<TProps, {}> */ {
 	constructor(props) {
 		super(props);
@@ -62,65 +42,26 @@ class App extends React.Component /*<TProps, {}> */ {
 	render() {
 		const { loginStatus, waitingForLogin, countResult, counting } = this.props;
 		return (
-			(
 			<Router>
 				<Switch>
-					<Route
-						exact
-						path="/"
-						render={() => {
-							return loginStatus ? (
-								<Redirect to="/organization" />
-							) : (
-								<Route path="/" component={LogInForm} />
-							);
-						}}
-					/>
-					<Route
-						exact
-						path="/employee"
-						render={() => {
-							return loginStatus ? (
-								<Route path="/employee" component={Employee} />
-							) : (
-								<Redirect to="/" />
-							);
-						}}
-					/>
-					<Route
-						exact
-						path="/organization"
-						render={() => {
-							return loginStatus ? (
-								<Route path="/organization" component={Organization} />
-							) : (
-								<Redirect to="/" />
-							);
-						}}
-					/>
-					<Route
-						exact
-						path="/division"
-						render={() => {
-							return loginStatus ? (
-								<Route path="/division" component={Division} />
-							) : (
-								<Redirect to="/" />
-							);
-						}}
-					/>
-					<Route exact path="/employee">
-						<Employee />
+					<Route exact path="/organization/:id/:empId">
+						{!loginStatus ? <Redirect to="/" /> : <Employee />}
 					</Route>
-					<Route exact path="/division">
-						<Division />
+					<Route exact path="/organization/:id">
+						{!loginStatus ? <Redirect to="/" /> : <Division />}
 					</Route>
 					<Route exact path="/organization">
-						<Organization />
+						{!loginStatus ? <Redirect to="/" /> : <Organization />}
 					</Route>
+					<Route exact path="/">
+						{loginStatus ? <Redirect to="/organization" component={Organization} /> : <LogInForm />}
+					</Route>
+					<Route exact path="/" component={LogInForm} />
+					<Route exact path="/organization" component={Organization} />
+					<Route exact path="/organization/:id" component={Division} />
+					<Route exact path="/organization/:id/:empId" component={Employee} />
 				</Switch>
 			</Router>
-			)
 		);
 	}
 }

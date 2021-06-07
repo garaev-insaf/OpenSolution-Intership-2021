@@ -13,35 +13,34 @@ import {
 	Redirect,
 	useHistory,
 } from "react-router-dom";
-import { createBrowserHistory } from "history";
-import { Division } from "../Division/Division";
 
-const OrgData = (props) => {
-	let match = useRouteMatch();
+const EmpData = (props) => {
 	return (
 		<div>
 			<table>
 				<thead>
 					<tr>
 						<th>id</th>
-						<th>name</th>
+						<th>id_division</th>
+						<th>FIO</th>
 						<th>address</th>
-						<th>INN</th>
+                        <th>position</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					{
 						(console.log("*****"),
-						console.log(props.org.length),
+						console.log(props.emp.length),
 						console.log("*****"),
-						props.org.length > 0 ? (
-							props.org.map((organ) => (
-								<tr key={organ.id}>
-									<td>{organ.id}</td>
-									<td>{organ.name}</td>
-									<td>{organ.address}</td>
-									<td>{organ.INN}</td>
+						props.emp.length > 0 ? (
+							props.emp.map((empl) => (
+								<tr key={empl.id}>
+									<td>{empl.id}</td>
+									<td>{empl.id_division}</td>
+									<td>{empl.FIO}</td>
+									<td>{empl.address}</td>
+                                    <td>{empl.position}</td>
 									<td>
 										<button className="button muted-button" onClick={() => props.setActive(true)}>
 											Edit
@@ -52,12 +51,6 @@ const OrgData = (props) => {
 										>
 											Delete
 										</button>
-										<NavLink
-											to={`/organization/${organ.id}`}
-											className="button muted-button detail-btn"
-										>
-											Details
-										</NavLink>
 									</td>
 								</tr>
 							))
@@ -69,15 +62,8 @@ const OrgData = (props) => {
 					}
 				</tbody>
 			</table>
-			<Router>
-				<Switch>
-					<Route path={`/organization/division/:id`}>
-						<Division />
-					</Route>
-				</Switch>
-			</Router>
 		</div>
 	);
 };
 
-export { OrgData };
+export { EmpData };

@@ -49,8 +49,8 @@ td {
     height: 40px;
     padding: 8px 12px;
     border-radius: 0.25rem;
-    background-color: #0088cc;
-    border-color: #0088cc;
+    background-color: green;
+    border-color: green;
     color: #ffffff;
     cursor: pointer;
     display: inline-block;
@@ -64,6 +64,11 @@ td {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.delete-btn {
+    background-color: red;
+    border-color: red;
 }
 
 .orgForm input {
@@ -91,20 +96,19 @@ td {
 }
 
 .Crud {
-    display: flex;
-    flex-direction: row;
-	/* justify-content: space-between; */
     width: 100%;
-    padding: 50px;
-    flex-wrap: nowrap;
 }
 
-.OrgForm, .OrgTable {
-    width: 600px;
-    margin: 0;
+.OrgForm, .OrgTable, .DivTable {
+    width: 650px;
+    margin: 0 50px;
+}
+.EmpTable {
+    width: 100%;
+    margin: 0 50px
 }
 .org-form-group {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
@@ -120,3 +124,31 @@ td {
     margin-left: 100px;
 }
 
+.navbar-wrap {
+    width: 100vw;
+    height: 50px;
+    background-color: #0088cc;
+    padding: 0 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-wrap .content {
+    width: 1080px;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+    height: 40px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: middle;
+    justify-content: center;
+    background-color: orangered;
+}
+
+.detail-btn {
+    background-color: #0088cc;
+}

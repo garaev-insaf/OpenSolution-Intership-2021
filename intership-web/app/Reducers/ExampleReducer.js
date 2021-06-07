@@ -1,5 +1,5 @@
 // import {IActionType} from '../common';
-import {ActionTypes, AsyncActionTypes} from '../Actions/Consts';
+import { ActionTypes, AsyncActionTypes } from "../Actions/Consts";
 
 /**
  * Состояние для Redux хранилища (стора).
@@ -19,56 +19,59 @@ import {ActionTypes, AsyncActionTypes} from '../Actions/Consts';
  * Начальное состояние стора.
  */
 const initialState = {
-    get state()/*: IExample*/ {
-        return {
-            loginStatus: false,
-            loading: false,
-            counter: 0,
-            counterIsLoading: false,
-        };
-    }
+	get state() /*: IExample*/ {
+		return {
+			loginStatus: false,
+			loading: false,
+			counter: 0,
+			counterIsLoading: false,
+		};
+	},
 };
 
-export default function reducer(state/*: IExample*/ = initialState.state, action/*: IActionType*/) {
-    switch (action.type) {
-        case `${ActionTypes.CLICK}${AsyncActionTypes.BEGIN}`:
-            return {
-                ...state,
-                counterIsLoading: true,
-            };
+export default function reducer(
+	state /*: IExample*/ = initialState.state,
+	action /*: IActionType*/
+) {
+	switch (action.type) {
+		case `${ActionTypes.CLICK}${AsyncActionTypes.BEGIN}`:
+			return {
+				...state,
+				counterIsLoading: true,
+			};
 
-        case `${ActionTypes.CLICK}${AsyncActionTypes.SUCCESS}`:
-            return {
-                ...state,
-                counterIsLoading: false,
-                counter: state.counter + (action.payload || 1),
-            };
+		case `${ActionTypes.CLICK}${AsyncActionTypes.SUCCESS}`:
+			return {
+				...state,
+				counterIsLoading: false,
+				counter: state.counter + (action.payload || 1),
+			};
 
-        case `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`:
-            return {
-                ...state,
-                loading: true,
-            };
+		case `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`:
+			return {
+				...state,
+				loading: true,
+			};
 
-        case `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`:
-            return {
-                ...state,
-                loginStatus: true,
-                loading: false,
-            };
+		case `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`:
+			return {
+				...state,
+				loginStatus: true,
+				loading: false,
+			};
 
-        case `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`:
-            return {
-                ...state,
-                loading: false,
-                loginStatus: false,
-            };
+		case `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`:
+			return {
+				...state,
+				loading: false,
+				loginStatus: false,
+			};
 
-        case ActionTypes.LOGOUT:
-            return {
-                ...state,
-                loginStatus: false,
-            };
-    }
-    return state;
+		case ActionTypes.LOGOUT:
+			return {
+				...state,
+				loginStatus: false,
+			};
+	}
+	return state;
 }

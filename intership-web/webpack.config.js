@@ -16,6 +16,7 @@ function buildConfig(env) {
         entry: './index.tsx',
         output: {
             filename: 'bundle.js',
+            publicPath: '/',
             path: path.resolve(__dirname, 'dist')
         },
         module: {

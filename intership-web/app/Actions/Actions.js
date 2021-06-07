@@ -2,6 +2,7 @@ import {Dispatch} from 'redux';
 //import {IActionType} from '../common';
 import {ActionTypes, AsyncActionTypes} from './Consts';
 //import {ILoginData} from './Models';
+import Axios from "axios";
 
 /**
  * Экшены для приложения.

@@ -2,24 +2,25 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import "../../App/App.css";
 
-const AddOrgForm = props => {
-	const initialFormState = { id: null, name: "", address: "", INN: '' };
+
+const AddEmpForm = props => {
+	const initialFormState = { id: null, id_division: "", FIO: "", address: '', position: "" };
 	// используем useState и передаем в качестве начального значения объект - initialFormState
-	const [org, setOrg] = useState(initialFormState);
+	const [emp, setEmp] = useState(initialFormState);
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.currentTarget;
-		setOrg({ ...org, [name]: value });
+		setDiv({ ...div, [name]: value });
 	};
 	const handleSubmit = event => {
 		event.preventDefault()
-		if (!org.name || !org.address || !org.INN) return
+		if (!div.name || !div.phone) return
 	
 		// вызываем addUser из хука из App
-		props.addOrg(org)
+		props.addDiv(div)
 		// обнуляем форму, с помощью setUser функции
 		// которая у нас взята из хука в данном компоненте [1]
-		setOrg(initialFormState)
+		setDiv(initialFormState)
 	  }
 	return (
 		<form className="orgForm" onSubmit={handleSubmit}>
@@ -27,17 +28,21 @@ const AddOrgForm = props => {
 				<label>id</label>
 				<input type="text" name="id" value={org.id} onChange={handleInputChange} />
 			</div> */}
+			{/* <div className="org-form-group">
+				<label>id_division</label>
+				<input type="text" name="name" value={emp.id_division} onChange={handleInputChange} />
+			</div> */}
 			<div className="org-form-group">
-				<label>name</label>
-				<input type="text" name="name" value={org.name} onChange={handleInputChange} />
+				<label>FIO</label>
+				<input type="text" name="FIO" value={emp.FIO} onChange={handleInputChange} />
 			</div>
 			<div className="org-form-group">
 				<label>address</label>
-				<input type="text" name="address" value={org.address} onChange={handleInputChange} />
+				<input type="number" name="address" value={emp.address} onChange={handleInputChange} />
 			</div>
-			<div className="org-form-group">
-				<label>INN</label>
-				<input type="number" name="INN" value={org.INN} onChange={handleInputChange} />
+            <div className="org-form-group">
+				<label>position</label>
+				<input type="number" name="position" value={emp.position} onChange={handleInputChange} />
 			</div>
 
 			<button className="button">Submit</button>
@@ -45,4 +50,4 @@ const AddOrgForm = props => {
 	)
 }
 
-export { AddOrgForm }
+export { AddEmpForm }
