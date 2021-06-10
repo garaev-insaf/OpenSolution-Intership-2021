@@ -19,61 +19,55 @@ import { ActionTypes, AsyncActionTypes } from "../Actions/Consts";
  * Начальное состояние стора.
  */
 const initialState = {
-	get state() /*: IExample*/ {
-		return {
-			loginStatus: localStorage.getItem("stat") ? localStorage.getItem("stat") : false,
-			loading: false,
-			counter: 0,
-			counterIsLoading: false,
-		};
-	},
+    get state() /*: IExample*/ {
+        return {
+            loginStatus: localStorage.getItem("stat") || false,
+            loading: false,
+            counter: 0,
+            counterIsLoading: false,
+        };
+    },
 };
 
 export default function reducer(
-	state /*: IExample*/ = initialState.state,
-	action /*: IActionType*/
+    state /*: IExample*/ = initialState.state,
+    action /*: IActionType*/
 ) {
-	switch (action.type) {
-		case `${ActionTypes.CLICK}${AsyncActionTypes.BEGIN}`:
-			return {
-				...state,
-				counterIsLoading: true,
-			};
+    switch (action.type) {
+        case `${ActionTypes.CLICK}${AsyncActionTypes.BEGIN}`:
+            return {
+                ...state,
+                counterIsLoading: true,
+            };
 
-		case `${ActionTypes.CLICK}${AsyncActionTypes.SUCCESS}`:
-			return {
-				...state,
-				counterIsLoading: false,
-				counter: state.counter + (action.payload || 1),
-			};
+        case `${ActionTypes.CLICK}${AsyncActionTypes.SUCCESS}`:
+            return {
+                ...state,
+                counterIsLoading: false,
+                counter: state.counter + (action.payload || 1),
+            };
 
-		case `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`:
-			return {
-				...state,
-				loading: true,
-			};
+        case `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`:
+            return {
+                ...state,
+                loading: true,
+            };
 
-		case `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`:
-			// localStorage.setItem("stat", true)
-			return {
-				...state,
-				loginStatus: localStorage.getItem("stat"),
-				loading: false,
-			};
+        case `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`:
+            localStorage.setItem("stat", true);
+            return {
+                ...state,
+                loginStatus: true,
+                loading: false,
+            };
 
-		case `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`:
-			localStorage.setItem("stat", false)
-			return {
-				...state,
-				loading: false,
-				loginStatus: localStorage.getItem("stat"),
-			};
-
-		// case "POST_LOGOUT":
-		// 	return {
-		// 		...state,
-		// 		loginStatus: localStorage.setItem("stat", '1234'),
-		// 	};
-	}
-	return state;
+        case `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`:
+            localStorage.setItem("stat", false);
+            return {
+                ...state,
+                loading: false,
+                loginStatus: false,
+            };
+    }
+    return state;
 }
