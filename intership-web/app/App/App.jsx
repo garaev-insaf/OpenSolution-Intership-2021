@@ -19,7 +19,6 @@ import React, { useState } from "react";
 import { Division } from "../components/Division/Division";
 import { Organization } from "../components/Organization/Organization";
 import { Employee } from "../components/Employee/Employee";
-import { createBrowserHistory } from "history";
 import { loginStatus, waitingForLogin, countResult, counting } from "../components/login";
 import "./App.css";
 import {history} from "../Store/Store.js"
@@ -42,16 +41,19 @@ class App extends React.Component /*<TProps, {}> */ {
 	render() {
 		const { loginStatus, waitingForLogin, countResult, counting } = this.props;
 		return (
+			console.log("loginStatus"),
+		console.log(loginStatus),
+		console.log("loginStatus"),
 			<Router>
 				<Switch>
 					<Route exact path="/organization/:id/:empId">
 						{!loginStatus ? <Redirect to="/" /> : <Employee />}
 					</Route>
 					<Route exact path="/organization/:id">
-						{!loginStatus ? <Redirect to="/" /> : <Division />}
+						{!loginStatus ? <Redirect to="/" /> : <Division />}	
 					</Route>
-					<Route exact path="/organization">
-						{!loginStatus ? <Redirect to="/" /> : <Organization />}
+					<Route exact path="/organization">	
+						{!loginStatus ? <Redirect to="/" /> : <Organization />}	
 					</Route>
 					<Route exact path="/">
 						{loginStatus ? <Redirect to="/organization" component={Organization} /> : <LogInForm />}

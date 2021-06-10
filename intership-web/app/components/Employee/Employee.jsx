@@ -2,14 +2,16 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
-import { BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    NavLink,
-    useRouteMatch,
-    useParams,
-    Redirect} from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	NavLink,
+	useRouteMatch,
+	useParams,
+	Redirect,
+} from "react-router-dom";
 import { IActionType } from "../common";
 import { Actions } from "../Actions/Actions";
 import { IStoreState } from "../Reducers/Reducers";
@@ -21,17 +23,17 @@ import { Modal } from "../modal";
 import { getEmps } from "../../Actions/MyActions";
 
 const Employee = () => {
-    let { empId } = useParams();
-	console.log('1231231');
-    console.log(empId);
-	console.log('123131');
+	let { empId } = useParams();
+	console.log("1231231");
+	console.log(empId);
+	console.log("123131");
 
 	const [appState, setAppState] = useState({
 		id: null,
 		id_division: "",
-        FIO: "",
+		FIO: "",
 		address: "",
-        position: "",
+		position: "",
 	});
 
 	const dispatch = useDispatch();
@@ -47,21 +49,23 @@ const Employee = () => {
 		empl.id = appState.length + 1;
 		setAppState([...appState, empl]);
 	};
-    return (
+	return (
 		<div className="Crud">
 			<div className="NavBar">
 				{/* добавляем таблицу: */}
 				<NavBar setActive={setModalActive} />
 			</div>
-			<div className="EmpTable">
-				{/* добавляем таблицу: */}
-				<EmpData emp={appState} setActive={setModalActive}/>
+			<div className="main-wrap">
+				<div className="EmpTable">
+					{/* добавляем таблицу: */}
+					<EmpData emp={appState} setActive={setModalActive} />
+				</div>
+				<Modal active={modalActive} setActive={setModalActive}>
+					<AddEmpForm addEmp={addEmp} />
+				</Modal>
 			</div>
-			<Modal active={modalActive} setActive={setModalActive}>
-				<AddEmpForm addEmp={addEmp} />
-			</Modal>
 		</div>
 	);
-  };
+};
 
 export { Employee };

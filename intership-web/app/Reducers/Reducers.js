@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 
 import { History } from 'history';
 import ExampleReducer/*, { IExample } */from './ExampleReducer'
-import { OrgReducer, DivReducer, EmpReducer } from './OrgReducer'
+import { OrgReducer, DivReducer, EmpReducer, LogOutReducer } from './OrgReducer'
 
 
 /**
@@ -25,6 +25,7 @@ const createRootReducer = (history) => combineReducers({
     org: OrgReducer,
     div: DivReducer,
     emp: EmpReducer,
+    log: LogOutReducer,
 })
 
 export default createRootReducer

@@ -12,18 +12,14 @@ export class Actions {
         this.dispatch = dispatch
     }
 
-    onClick = async (increment/*: number*/) => {
-        //Простейший асинхронный экшен
-        // setTimeout(() => {
-        //   this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`});
-        // }, 2000);
-
+    onClick = async () => {
         this.dispatch({type: `${ActionTypes.CLICK}${AsyncActionTypes.BEGIN}`});
         await new Promise((resolve) => setTimeout(resolve, 2000));
-        this.dispatch({type: `${ActionTypes.CLICK}${AsyncActionTypes.SUCCESS}`, payload: increment});
+        this.dispatch({type: `${ActionTypes.CLICK}${AsyncActionTypes.SUCCESS}`});
     };
 
     onLogin = (loginData/*: ILoginData*/) => {
+        localStorage.setItem("stat", false);
         let flag = 0;
         console.log(loginData);
         this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.BEGIN}`});
@@ -52,6 +48,7 @@ export class Actions {
                     this.dispatch({type: `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`});
                     flag = 1;
                     console.log("flag = 1");
+                    localStorage.setItem('stat', true);
                 } else {
                     flag = 0;
                     console.log("flag = 0");
@@ -95,9 +92,10 @@ export class Actions {
         fetch('http://127.0.0.1:8080/logout', options)
         .then(response => {
             if (response.status === 200) {
+                console.log('LOGOUT')
                 this.dispatch({type: ActionTypes.LOGOUT});
             } else {
-                throw 'error';
+                throw 'error';  
             }
         })
         .catch(() => {

@@ -8,7 +8,7 @@ import {
 	Route,
 	Link,
 	NavLink,
-	useRouteMatch,
+	useRouteMatch,	
 	useParams,
 	Redirect,
 	useHistory
@@ -21,13 +21,14 @@ import "../../App/App.css";
 // import OnLoadingOrgData from "./OnLoadingOrgData.js";
 import { OrgData } from "./OrgData.js";
 import { AddOrgForm } from "./AddOrgForm";
-import { NavBar } from "../NavBar";
+import { OrgNavBar } from "./OrgNavBar";
 import { Modal } from "../modal";
 import { getOrgs } from "../../Actions/MyActions";
 
 const Organization = () => {
 
 	let match = useRouteMatch();
+	const nowId = 0;
 
 	const [appState, setAppState] = useState({
 		id: null,
@@ -39,33 +40,26 @@ const Organization = () => {
 	const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState();
 	appState = useSelector((state) => state.org);
-	console.log(appState);
-
+	localStorage.setItem("id", Number(appState.length))
 	useEffect(() => {
 		dispatch(getOrgs());
 	}, [dispatch]);
 
-	const addOrg = (organ) => {
-		// создаем id значением на 1 больше (автоинкремент)
-		organ.id = appState.length + 1;
-		setAppState([...appState, organ]);
-	};
-	const routingId = (props) => {
-		return props
-	}
 	return (
 		<div className="Crud">
 			<div className="NavBar">
 				{/* добавляем таблицу: */}
-				<NavBar setActive={setModalActive} />
+				<OrgNavBar setActive={setModalActive} />
 			</div>
+			<div className="main-wrap">
 			<div className="OrgTable">
 				{/* добавляем таблицу: */}
-				<OrgData org={appState} setActive={setModalActive} chooseId={routingId}/>
+				<OrgData org={appState}/>
 			</div>
 			<Modal active={modalActive} setActive={setModalActive}>
-				<AddOrgForm addOrg={addOrg} />
+				<AddOrgForm setActive={setModalActive}/>
 			</Modal>
+			</div>
 		</div>
 	);
 };

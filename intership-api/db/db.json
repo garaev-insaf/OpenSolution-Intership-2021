@@ -6,15 +6,75 @@
   "organization": [
     {
       "id": 1,
-      "name": "Organization 1",
-      "address": "1 street",
+      "name": "Organization 2",
+      "address": "Проспект Мира - Дом Кефира!",
       "INN": 1234567890
     },
     {
       "id": 2,
-      "name": "org 2",
-      "address": "kirov",
-      "INN": 123124123
+      "name": "123213213",
+      "address": "Улица Пушкина - дом Колотушкина",
+      "INN": 3213123213
+    },
+    {
+      "id": 3,
+      "name": "Scotch",
+      "address": "ddad",
+      "INN": "1111111111111"
+    },
+    {
+      "id": 4,
+      "name": "fdssfd",
+      "address": "asdasd",
+      "INN": 123313
+    },
+    {
+      "id": 5,
+      "name": "Инсаф",
+      "address": "dasdas",
+      "INN": 23123123
+    },
+    {
+      "id": 6,
+      "name": "уйцу",
+      "address": "уйцуйв321313",
+      "INN": 31231313
+    },
+    {
+      "id": 7,
+      "name": "eqeqq",
+      "address": "31313eqweqe",
+      "INN": 3123123123
+    },
+    {
+      "id": 8,
+      "name": "3123",
+      "address": "3123",
+      "INN": 3123213
+    },
+    {
+      "id": 9,
+      "name": "3123",
+      "address": "вфвф",
+      "INN": 313211
+    },
+    {
+      "id": 10,
+      "name": "3123",
+      "address": "3213",
+      "INN": 31312
+    },
+    {
+      "id": 11,
+      "name": "Инсаф3",
+      "address": "1231",
+      "INN": 31231231
+    },
+    {
+      "id": 12,
+      "name": "easdd",
+      "address": "asdasd",
+      "INN": 12132313
     }
   ],
   "division": [

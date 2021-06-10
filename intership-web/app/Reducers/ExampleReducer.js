@@ -21,7 +21,7 @@ import { ActionTypes, AsyncActionTypes } from "../Actions/Consts";
 const initialState = {
 	get state() /*: IExample*/ {
 		return {
-			loginStatus: false,
+			loginStatus: localStorage.getItem("stat") ? localStorage.getItem("stat") : false,
 			loading: false,
 			counter: 0,
 			counterIsLoading: false,
@@ -54,24 +54,26 @@ export default function reducer(
 			};
 
 		case `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`:
+			// localStorage.setItem("stat", true)
 			return {
 				...state,
-				loginStatus: true,
+				loginStatus: localStorage.getItem("stat"),
 				loading: false,
 			};
 
 		case `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`:
+			localStorage.setItem("stat", false)
 			return {
 				...state,
 				loading: false,
-				loginStatus: false,
+				loginStatus: localStorage.getItem("stat"),
 			};
 
-		case ActionTypes.LOGOUT:
-			return {
-				...state,
-				loginStatus: false,
-			};
+		// case "POST_LOGOUT":
+		// 	return {
+		// 		...state,
+		// 		loginStatus: localStorage.setItem("stat", '1234'),
+		// 	};
 	}
 	return state;
 }

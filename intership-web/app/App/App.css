@@ -98,14 +98,17 @@ td {
 .Crud {
     width: 100%;
 }
-
-.OrgForm, .OrgTable, .DivTable {
-    width: 650px;
-    margin: 0 50px;
+.main-wrap {
+    padding: 0 50px;
 }
-.EmpTable {
+
+.OrgForm, .DivTable {
+    width: 650px;
+    margin: 0 0
+}
+.EmpTable, .OrgTable {
     width: 100%;
-    margin: 0 50px
+    margin: 0 0
 }
 .org-form-group {
     width: 100%;
@@ -138,8 +141,21 @@ td {
     width: 1080px;
     display: flex;
     align-self: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 40px;
+}
+
+.orgnavbar-wrap {
+    flex-direction: column !important;
+    display: flex;
+    align-items: flex-end !important;
+}
+
+.content {
+    width: 100%;
+}
+.content.main {
+    width: 50%;
 }
 
 .nav-btn {

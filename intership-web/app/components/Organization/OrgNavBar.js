@@ -14,21 +14,15 @@ import {
 	useHistory
 } from "react-router-dom";
 import { IActionType } from "../common";
-import { Actions } from "../Actions/Actions.js";
-import { IStoreState } from "../Reducers/Reducers";
 import Axios from "axios";
-import "../App/App.css";
-import { Modal } from "../components/modal";
-import { onLogout } from "../Actions/MyActions";
-import { goBack } from "connected-react-router";
-import {history} from "../Store/Store"
+import "../../App/App.css";
+import { onLogout } from "../../Actions/MyActions";
 
-const NavBar = (props) => {
+const OrgNavBar = (props) => {
 	const dispatch = useDispatch();
 	return (
-		<div className="wrap navbar-wrap">
-			<div className="content">
-				<button className="button nav-btn" onClick={() => history.goBack()}>Back</button>
+		<div className="wrap navbar-wrap orgnavbar-wrap">
+			<div className="content main">
 				<button className="button nav-btn" onClick={() => props.setActive(true)}>
 					Add
 				</button>
@@ -38,4 +32,4 @@ const NavBar = (props) => {
 	);
 };
 
-export { NavBar };
+export { OrgNavBar };
