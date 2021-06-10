@@ -26,6 +26,7 @@ const OrgData = (props) => {
 	const delId = null;
 	const upId = null;
 	const initialFormState = { id: null, name: "", address: "", INN: "" };
+
 	const [modalActive, setModalActive] = useState();
 	const [org, setOrg] = useState(initialFormState);
 	const [flag, setFlag] = useState();

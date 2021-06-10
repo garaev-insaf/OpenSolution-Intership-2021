@@ -38,17 +38,10 @@ const Division = () => {
 	const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState();
 	appState = useSelector((state) => state.div);
-	console.log(appState);
-
 	useEffect(() => {
 		dispatch(getDivisions(id));
 	}, [dispatch]);
-
-	const addDiv = (divis) => {
-		// создаем id значением на 1 больше (автоинкремент)
-		divis.id = appState.length + 1;
-		setAppState([...appState, divis]);
-	};
+	localStorage.setItem("Divid", Number(appState.length))
 	return (
 		<div className="Crud">
 			<div className="NavBar">
@@ -61,7 +54,7 @@ const Division = () => {
 					<DivData div={appState} setActive={setModalActive} />
 				</div>
 				<Modal active={modalActive} setActive={setModalActive}>
-					<AddDivForm addDiv={addDiv} />
+					<AddDivForm setActive={setModalActive}/>
 				</Modal>
 			</div>
 		</div>

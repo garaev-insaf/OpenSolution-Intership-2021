@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    NavLink,
-    useRouteMatch,
-    useParams,
-    Redirect,
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	NavLink,
+	useRouteMatch,
+	useParams,
+	Redirect,
 } from "react-router-dom";
 import { IActionType } from "../common";
 import { Actions } from "../Actions/Actions";
@@ -23,49 +23,42 @@ import { Modal } from "../modal";
 import { getEmps } from "../../Actions/MyActions";
 
 const Employee = () => {
-    let { empId } = useParams();
-    console.log("1231231");
-    console.log(empId);
-    console.log("123131");
+	let { empId } = useParams();
+	console.log("1231231");
+	console.log(empId);
+	console.log("123131");
 
-    const [appState, setAppState] = useState({
-        id: null,
-        id_division: "",
-        FIO: "",
-        address: "",
-        position: "",
-    });
+	const [appState, setAppState] = useState({
+		id: null,
+		id_division: "",
+		FIO: "",
+		address: "",
+		position: "",
+	});
 
-    const dispatch = useDispatch();
-    const [modalActive, setModalActive] = useState();
-    appState = useSelector((state) => state.emp);
-    console.log(appState);
-    useEffect(() => {
-        dispatch(getEmps(empId));
-    }, [dispatch]);
-
-    const addEmp = (empl) => {
-        // создаем id значением на 1 больше (автоинкремент)
-        empl.id = appState.length + 1;
-        setAppState([...appState, empl]);
-    };
-    return (
-        <div className="Crud">
-            <div className="NavBar">
-                {/* добавляем таблицу: */}
-                <NavBar setActive={setModalActive} />
-            </div>
-            <div className="main-wrap">
-                <div className="EmpTable">
-                    {/* добавляем таблицу: */}
-                    <EmpData emp={appState} setActive={setModalActive} />
-                </div>
-                <Modal active={modalActive} setActive={setModalActive}>
-                    <AddEmpForm addEmp={addEmp} />
-                </Modal>
-            </div>
-        </div>
-    );
+	const dispatch = useDispatch();
+	const [modalActive, setModalActive] = useState();
+	appState = useSelector((state) => state.emp);
+	console.log(appState);
+	useEffect(() => {
+		dispatch(getEmps(empId));
+	}, [dispatch]);
+	localStorage.setItem("Empid", Number(appState.length));
+	return (
+		<div className="Crud">
+			<div className="NavBar">
+				{/* добавляем таблицу: */}
+				<NavBar setActive={setModalActive} />
+			</div>
+			<div className="main-wrap">
+				<div className="EmpTable">
+					{/* добавляем таблицу: */}
+					<EmpData emp={appState} setActive={setModalActive} />
+				</div>
+				<AddEmpForm setActive={setModalActive} />
+			</div>
+		</div>
+	);
 };
 
 export { Employee };

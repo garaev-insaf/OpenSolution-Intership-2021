@@ -1,8 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { postEmp } from "../../Actions/MyActions";
 import "../../App/App.css";
+import { Modal } from "../modal";
 
 const AddEmpForm = (props) => {
+    const dispatch = useDispatch();
+	const realId = 0;
     const initialFormState = {
         id: null,
         id_division: "",
@@ -12,31 +17,27 @@ const AddEmpForm = (props) => {
     };
     // используем useState и передаем в качестве начального значения объект - initialFormState
     const [emp, setEmp] = useState(initialFormState);
-
+    const [modalActive, setModalActive] = useState();
     const handleInputChange = (event) => {
         const { name, value } = event.currentTarget;
-        setDiv({ ...div, [name]: value });
+        setEmp({ ...emp, [name]: value });
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!div.name || !div.phone) return;
-
-        // вызываем addUser из хука из App
-        props.addDiv(div);
-        // обнуляем форму, с помощью setUser функции
-        // которая у нас взята из хука в данном компоненте [1]
-        setDiv(initialFormState);
+        if (!emp.id_division || !emp.FIO || !emp.address || !emp.position) return;
+        realId = Number(localStorage.getItem("Empid")) + 1;
+		console.log("realId:", realId);
+        emp.id = realId;
+        dispatch(postEmp(realId, emp));
+        setEmp(initialFormState);
     };
     return (
+        <Modal active={modalActive} setActive={setModalActive}>
         <form className="orgForm" onSubmit={handleSubmit}>
-            {/* <div className="org-form-group">
-				<label>id</label>
-				<input type="text" name="id" value={org.id} onChange={handleInputChange} />
-			</div> */}
-            {/* <div className="org-form-group">
+            <div className="org-form-group">
 				<label>id_division</label>
-				<input type="text" name="name" value={emp.id_division} onChange={handleInputChange} />
-			</div> */}
+				<input type="text" name="id_division" value={emp.id_division} onChange={handleInputChange} />
+			</div>
             <div className="org-form-group">
                 <label>FIO</label>
                 <input
@@ -49,7 +50,7 @@ const AddEmpForm = (props) => {
             <div className="org-form-group">
                 <label>address</label>
                 <input
-                    type="number"
+                    type="text"
                     name="address"
                     value={emp.address}
                     onChange={handleInputChange}
@@ -58,15 +59,16 @@ const AddEmpForm = (props) => {
             <div className="org-form-group">
                 <label>position</label>
                 <input
-                    type="number"
+                    type="text"
                     name="position"
                     value={emp.position}
                     onChange={handleInputChange}
                 />
             </div>
 
-            <button className="button">Submit</button>
+            <button type="submit" className="button" onClick={() => setModalActive(false)}>Submit</button>
         </form>
+        </Modal>
     );
 };
 

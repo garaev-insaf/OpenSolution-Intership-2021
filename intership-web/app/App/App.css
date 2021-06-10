@@ -108,13 +108,13 @@ td {
     padding: 0 50px;
 }
 
-.OrgForm,
-.DivTable {
+.OrgForm {
     width: 650px;
     margin: 0 0;
 }
 .EmpTable,
-.OrgTable {
+.OrgTable,
+.DivTable {
     width: 100%;
     margin: 0 0;
 }

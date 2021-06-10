@@ -19,7 +19,7 @@ import { IStoreState } from "../Reducers/Reducers";
 import Axios from "axios";
 import "../../App/App.css";
 // import OnLoadingOrgData from "./OnLoadingOrgData.js";
-import { OrgData } from "./OrgData.js";
+import { OrgData } from "./OrgData";
 import { AddOrgForm } from "./AddOrgForm";
 import { OrgNavBar } from "./OrgNavBar";
 import { Modal } from "../modal";
@@ -40,7 +40,7 @@ const Organization = () => {
 	const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState();
 	appState = useSelector((state) => state.org);
-	localStorage.setItem("id", Number(appState.length))
+	localStorage.setItem("Orgid", Number(appState.length))
 	useEffect(() => {
 		dispatch(getOrgs());
 	}, [dispatch]);

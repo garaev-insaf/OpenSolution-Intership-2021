@@ -88,6 +88,58 @@ export const getDivisions = (id) => {
             });
     };
 };
+export const postDivisions = (id, divis) => {
+    return (dispatch) => {
+        axios
+            .post(`http://localhost:8080/division/?id=${id}`, divis)
+            .then((divs) => {
+                console.log("Показываю: ", divs);
+                dispatch({
+                    type: "POST_DIVS",
+                    divs,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
+
+export const putDivisions = (id, divis) => {
+    return (dispatch) => {
+        axios
+            .put(`http://localhost:8080/division/?id=${id}`, divis, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((divs) => {
+                dispatch({
+                    type: "PUT_DIVS",
+                    divs,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
+
+export const delDivisions = (id) => {
+    return (dispatch) => {
+        axios
+            .delete(`http://localhost:8080/division/?id=${id}`)
+            .then(() => {
+                dispatch({
+                    type: "DEL_DIVS",
+                    id,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
 
 export const getEmps = (empId) => {
     console.log("принял айди emp");
@@ -100,6 +152,59 @@ export const getEmps = (empId) => {
                 dispatch({
                     type: "GET_EMPS",
                     emp,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
+
+export const postEmp = (id, empl) => {
+    return (dispatch) => {
+        axios
+            .post(`http://localhost:8080/employee/?id=${id}`, empl)
+            .then((emps) => {
+                console.log("Показываю: ", emps);
+                dispatch({
+                    type: "POST_EMPS",
+                    emps,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
+
+export const putEmp = (id, empl) => {
+    return (dispatch) => {
+        axios
+            .put(`http://localhost:8080/employee/?id=${id}`, empl, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((emps) => {
+                dispatch({
+                    type: "PUT_EMPS",
+                    emps,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
+
+export const delEmp = (id) => {
+    return (dispatch) => {
+        axios
+            .delete(`http://localhost:8080/employee/?id=${id}`)
+            .then(() => {
+                dispatch({
+                    type: "DEL_EMPS",
+                    id,
                 });
             })
             .catch((error) => {
