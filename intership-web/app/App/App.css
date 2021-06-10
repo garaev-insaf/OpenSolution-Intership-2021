@@ -1,27 +1,27 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body,
 #app {
-	height: 100%;
+    height: 100%;
 }
 
 #app {
     display: flex;
     /* flex-direction: column; */
     min-height: 100%;
-    position: relative
-} 
+    position: relative;
+}
 
 main {
-    flex-grow: 1
+    flex-grow: 1;
 }
 
 footer {
-    flex-shrink: 0
+    flex-shrink: 0;
 }
 .main {
     display: block;
@@ -30,7 +30,8 @@ footer {
 .tableBlock {
     padding: 50px;
 }
-td, th {
+td,
+th {
     padding: 10px;
     border: 1px solid rgb(124, 123, 123);
 }
@@ -40,7 +41,7 @@ th {
     color: #ffffff;
 }
 td {
-    background-color: #ffF;
+    background-color: #fff;
 }
 .button {
     margin-left: 5px;
@@ -49,8 +50,8 @@ td {
     height: 40px;
     padding: 8px 12px;
     border-radius: 0.25rem;
-    background-color: #0088cc;
-    border-color: #0088cc;
+    background-color: green;
+    border-color: green;
     color: #ffffff;
     cursor: pointer;
     display: inline-block;
@@ -60,17 +61,26 @@ td {
     text-transform: none;
     line-height: 1.5;
     border: none;
-    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-transition: color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.delete-btn {
+    background-color: red;
+    border-color: red;
 }
 
 .orgForm input {
     position: relative;
     -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
     width: 180px;
     margin-bottom: 0;
     height: 40px;
@@ -87,29 +97,34 @@ td {
     -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
     transition: -webkit-box-shadow 0.15s ease-in-out;
     transition: box-shadow 0.15s ease-in-out;
-    transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .Crud {
-    display: flex;
-    flex-direction: row;
-	/* justify-content: space-between; */
     width: 100%;
-    padding: 50px;
-    flex-wrap: nowrap;
+}
+.main-wrap {
+    padding: 0 50px;
 }
 
-.OrgForm, .OrgTable {
-    width: 600px;
-    margin: 0;
+.OrgForm,
+.DivTable {
+    width: 650px;
+    margin: 0 0;
+}
+.EmpTable,
+.OrgTable {
+    width: 100%;
+    margin: 0 0;
 }
 .org-form-group {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
-.org-form-group label{
+.org-form-group label {
     width: 100%;
     font-size: 24px;
     font-weight: 400;
@@ -120,3 +135,44 @@ td {
     margin-left: 100px;
 }
 
+.navbar-wrap {
+    width: 100vw;
+    height: 50px;
+    background-color: #0088cc;
+    padding: 0 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-wrap .content {
+    width: 1080px;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.orgnavbar-wrap {
+    flex-direction: column !important;
+    display: flex;
+    align-items: flex-end !important;
+}
+
+.content {
+    width: 100%;
+}
+.content.main {
+    width: 50%;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: middle;
+    justify-content: center;
+    background-color: orangered;
+}
+
+.detail-btn {
+    background-color: #0088cc;
+}

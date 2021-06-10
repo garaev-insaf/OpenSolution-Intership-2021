@@ -10,10 +10,10 @@
 //     CLICK = 'ACTION_CLICK',
 // }
 export const ActionTypes = {
-    LOGIN: 'ACTION_LOGIN',
-    LOGOUT: 'ACTION_LOGOUT',
-    CLICK: 'ACTION_CLICK',
-}
+    LOGIN: "ACTION_LOGIN",
+    LOGOUT: "ACTION_LOGOUT",
+    CLICK: "ACTION_CLICK",
+};
 
 /**
  * Подтипы для экшенов при ассинхронной работы.
@@ -27,7 +27,7 @@ export const ActionTypes = {
 //     FAILURE = '_FAILURE',
 // }
 export const AsyncActionTypes = {
-    BEGIN: '_BEGIN',
-    SUCCESS: '_SUCCESS',
-    FAILURE: '_FAILURE',
-}
+    BEGIN: "_BEGIN",
+    SUCCESS: "_SUCCESS",
+    FAILURE: "_FAILURE",
+};

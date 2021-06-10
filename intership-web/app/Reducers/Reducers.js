@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 
 import { History } from 'history';
 import ExampleReducer/*, { IExample } */from './ExampleReducer'
+import { OrgReducer, DivReducer, EmpReducer, LogOutReducer } from './OrgReducer'
 
 
 /**
@@ -18,10 +19,13 @@ import ExampleReducer/*, { IExample } */from './ExampleReducer'
  * Возвращает редьюсер.
  * @param {History} history
  */
-const createRootReducer = (history/*: History*/) => combineReducers/*<IStoreState>*/({
+const createRootReducer = (history) => combineReducers({
     router: connectRouter(history),
     Example: ExampleReducer,
-
+    org: OrgReducer,
+    div: DivReducer,
+    emp: EmpReducer,
+    log: LogOutReducer,
 })
 
 export default createRootReducer

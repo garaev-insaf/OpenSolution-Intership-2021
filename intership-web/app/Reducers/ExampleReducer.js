@@ -1,5 +1,5 @@
 // import {IActionType} from '../common';
-import {ActionTypes, AsyncActionTypes} from '../Actions/Consts';
+import { ActionTypes, AsyncActionTypes } from "../Actions/Consts";
 
 /**
  * Состояние для Redux хранилища (стора).
@@ -19,17 +19,20 @@ import {ActionTypes, AsyncActionTypes} from '../Actions/Consts';
  * Начальное состояние стора.
  */
 const initialState = {
-    get state()/*: IExample*/ {
+    get state() /*: IExample*/ {
         return {
-            loginStatus: false,
+            loginStatus: localStorage.getItem("stat") || false,
             loading: false,
             counter: 0,
             counterIsLoading: false,
         };
-    }
+    },
 };
 
-export default function reducer(state/*: IExample*/ = initialState.state, action/*: IActionType*/) {
+export default function reducer(
+    state /*: IExample*/ = initialState.state,
+    action /*: IActionType*/
+) {
     switch (action.type) {
         case `${ActionTypes.CLICK}${AsyncActionTypes.BEGIN}`:
             return {
@@ -51,6 +54,7 @@ export default function reducer(state/*: IExample*/ = initialState.state, action
             };
 
         case `${ActionTypes.LOGIN}${AsyncActionTypes.SUCCESS}`:
+            localStorage.setItem("stat", true);
             return {
                 ...state,
                 loginStatus: true,
@@ -58,15 +62,10 @@ export default function reducer(state/*: IExample*/ = initialState.state, action
             };
 
         case `${ActionTypes.LOGIN}${AsyncActionTypes.FAILURE}`:
+            localStorage.setItem("stat", false);
             return {
                 ...state,
                 loading: false,
-                loginStatus: false,
-            };
-
-        case ActionTypes.LOGOUT:
-            return {
-                ...state,
                 loginStatus: false,
             };
     }

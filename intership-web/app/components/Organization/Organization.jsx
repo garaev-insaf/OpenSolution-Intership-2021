@@ -1,8 +1,18 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	NavLink,
+	useRouteMatch,	
+	useParams,
+	Redirect,
+	useHistory
+} from "react-router-dom";
 import { IActionType } from "../common";
 import { Actions } from "../../Actions/Actions.js";
 import { IStoreState } from "../Reducers/Reducers";
@@ -11,52 +21,63 @@ import "../../App/App.css";
 // import OnLoadingOrgData from "./OnLoadingOrgData.js";
 import { OrgData } from "./OrgData.js";
 import { AddOrgForm } from "./AddOrgForm";
+import { OrgNavBar } from "./OrgNavBar";
+import { Modal } from "../modal";
+import { getOrgs } from "../../Actions/MyActions";
 
 const Organization = () => {
-	// const DataLoading = OnLoadingOrgData( OrgData );
+
+	let match = useRouteMatch();
+	const nowId = 0;
 
 	const [appState, setAppState] = useState({
-		id: null, name: "", address: "", INN: ''
+		id: null,
+		name: "",
+		address: "",
+		INN: "",
 	});
+
+	const dispatch = useDispatch();
+	const [modalActive, setModalActive] = useState();
+	appState = useSelector((state) => state.org);
+	localStorage.setItem("id", Number(appState.length))
 	useEffect(() => {
-		// setAppState({ loading: true });
-		const apiUrl = "http://127.0.0.1:8080/organization";
-		Axios.get(apiUrl).then((resp) => {
-			const allOrgs = resp.data;
-			setAppState(allOrgs);
-		});
-	}, [setAppState]);
-	console.log('-----')
-	console.log(appState)
-	console.log('-----')
-  const addOrg = organ => {
-    // создаем id значением на 1 больше (автоинкремент)
-    organ.id = appState.length + 1
-    // вызываем setUsers определенную выше в хуке useState
-    // передаем туда все, что было в users + новый элемент user
-    // setAppState({
-    //    loading: false,
-    //   org: organ,
-    // });
-	setAppState([ ...appState, organ ])
-  }
+		dispatch(getOrgs());
+	}, [dispatch]);
+
 	return (
 		<div className="Crud">
+			<div className="NavBar">
+				{/* добавляем таблицу: */}
+				<OrgNavBar setActive={setModalActive} />
+			</div>
+			<div className="main-wrap">
 			<div className="OrgTable">
 				{/* добавляем таблицу: */}
-				<OrgData org={ appState } />
+				<OrgData org={appState}/>
 			</div>
-			<div className="OrgForm">
-				<h2>Add organization</h2>
-				{/* добавили форму */}
-				<AddOrgForm addOrg={ addOrg }/>
+			<Modal active={modalActive} setActive={setModalActive}>
+				<AddOrgForm setActive={setModalActive}/>
+			</Modal>
 			</div>
 		</div>
-	)
-}
+	);
+};
 export { Organization };
 {
 	/* <NavLink to="/division">
 				<h2>Organization</h2>
 			</NavLink> */
+}
+{
+	{
+		/* <div className="OrgForm">
+				<h2>Add organization</h2>
+
+				<AddOrgForm addOrg={ addOrg }/>
+			</div>
+			<div className="OrgForm">
+				<button onClick={}></button>
+			</div> */
+	}
 }
