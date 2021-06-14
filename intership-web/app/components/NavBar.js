@@ -34,6 +34,7 @@ const NavBar = (props) => {
 				</button>
 				<NavLink to="/" className="button nav-btn" onClick={() => dispatch(onLogout())}>LogOut</NavLink>
 			</div>
+			
 		</div>
 	);
 };

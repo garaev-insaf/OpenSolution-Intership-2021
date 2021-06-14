@@ -12,6 +12,7 @@ class LogInForm extends React.Component {
 		this.state = {
 			login: "",
 			password: "",
+			clicked: false,
 		};
 
 		this.handleLoginInput = this.handleLoginInput.bind(this);
@@ -19,8 +20,10 @@ class LogInForm extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+
+
 	handleLoginInput(event) {
-		this.setState({ login: event.target.login });
+		this.setState({ login: event.target.login })
 	}
 
 	handlePasswordInput(event) {
@@ -31,6 +34,7 @@ class LogInForm extends React.Component {
 		event.preventDefault();
 		const logI = event.target.login.value;
 		const pas = event.target.password.value;
+		this.setState({clicked: true});
 
 		console.log("Логин: " + logI);
 		console.log("Пароль: " + pas);
@@ -46,67 +50,65 @@ class LogInForm extends React.Component {
 		});
 
 	render() {
-		const { loginStatus, waitingForLogin, countResult, counting } = this.props; 
+		const { loginStatus, waitingForLogin, countResult, counting } = this.props;
 		return (
-					<section className="body-sign">
-						<div className="center-sign">
-							<div className="panel card-sign">
-								<div className="card-sign-title cst-signup">
-									<h2 className="title">Войти</h2>
-								</div>
-								<div className="card-body cb-signup">
-									<form action="" onSubmit={this.handleSubmit}>
-										<div className="form-group login">
-											<label htmlFor="" type="text">
-												Логин
-											</label>
-											<div className="input-group">
-												<input
-													name="login"
-													type="text"
-													className="form-control"
-													value={this.state.login}
-													onChange={this.handleLoginInput}
-												/>
-											</div>
-										</div>
-										<div className="form-group pwd">
-											<div className="pwd-title">
-												<label htmlFor="Password" className="pwd-tit">
-													Пароль
-												</label>
-												<a href="#" className="pwd-lost">
-													Забыли пароль?
-												</a>
-											</div>
-											<div className="input-group">
-												<input
-													name="password"
-													autoComplete="off"
-													type="password"
-													className="form-control"
-													value={this.state.password}
-													onChange={this.handlePasswordInput}
-												/>
-											</div>
-										</div>
-										<div className="bot-cont">
-											<div className="checkbox-cont">
-												<input id="AgreeTerms" name="agreeTerms" type="checkbox" />
-												<label htmlFor="AgreeTerms">Запомнить меня</label>
-											</div>
-											<div className="submit-cont">
-												<button className="btn-primary" type="submit" value="Войти">Войти</button>
-											</div>
-										</div>
-										<p className="link-up">
-											Don't have an account yet? <a href="#">Зарегистрироваться!</a>
-										</p>
-									</form>
-								</div>
-							</div>
+			<section className="body-sign">
+				<div className="center-sign">
+					<div className="panel card-sign">
+						<div className="card-sign-title cst-signup">
+							<h2 className="title">Войти</h2>
 						</div>
-					</section>
+						<div className="card-body cb-signup">
+							<form action="" onSubmit={this.handleSubmit}>
+								<div className="form-group login">
+									<label htmlFor="" type="text">
+										Логин
+									</label>
+									<div className="input-group">
+										<input
+											name="login"
+											type="text"
+											className="form-control"
+											placeholder="Enter your login ..."
+											value={this.state.login}
+											onChange={this.handleLoginInput}
+										/>
+									</div>
+								</div>
+								<div className="form-group pwd"> 
+									<div className="pwd-title">
+										<label htmlFor="Password" className="pwd-tit">
+											Пароль
+										</label>
+									</div>
+									<div className="input-group">
+										<input
+											name="password"
+											autoComplete="off"
+											type="password"
+											className="form-control"
+											placeholder="Enter your password ..."
+											value={this.state.password}
+											onChange={this.handlePasswordInput}
+										/>
+									</div>
+								</div>
+								{(!loginStatus && this.state.clicked) ? <div style={{color: 'red'}}>Неверный логин или пароль</div> : <div></div>}
+								<div className="bot-cont">
+									<div className="submit-cont">
+										<button className="btn-primary" type="submit" value="Войти">
+											Войти
+										</button>
+									</div>
+								</div>
+								<p className="link-up">
+									Don't have an account yet? <a href="#">Зарегистрироваться!</a>
+								</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
 		);
 	}
 }

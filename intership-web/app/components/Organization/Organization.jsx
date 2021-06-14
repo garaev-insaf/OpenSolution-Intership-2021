@@ -40,11 +40,9 @@ const Organization = () => {
 	const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState();
 	appState = useSelector((state) => state.org);
-	localStorage.setItem("Orgid", Number(appState.length))
 	useEffect(() => {
 		dispatch(getOrgs());
 	}, [dispatch]);
-
 	return (
 		<div className="Crud">
 			<div className="NavBar">

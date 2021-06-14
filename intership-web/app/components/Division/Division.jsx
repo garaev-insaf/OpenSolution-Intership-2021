@@ -24,9 +24,6 @@ import { getDivisions } from "../../Actions/MyActions";
 
 const Division = () => {
 	let { id } = useParams();
-	console.log("блабла");
-	console.log(id);
-	console.log("блабла");
 
 	const [appState, setAppState] = useState({
 		id: null,
@@ -41,7 +38,6 @@ const Division = () => {
 	useEffect(() => {
 		dispatch(getDivisions(id));
 	}, [dispatch]);
-	localStorage.setItem("Divid", Number(appState.length))
 	return (
 		<div className="Crud">
 			<div className="NavBar">

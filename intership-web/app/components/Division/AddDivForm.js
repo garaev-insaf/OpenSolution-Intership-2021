@@ -6,9 +6,7 @@ import "../../App/App.css";
 
 const AddDivForm = (props) => {
 	const dispatch = useDispatch();
-	const realId = 0;
 	const initialFormState = {
-		id: null,
 		id_organization: "",
 		name: "",
 		phone: "",
@@ -23,11 +21,7 @@ const AddDivForm = (props) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (!div.name || !div.phone) return;
-
-        realId = Number(localStorage.getItem("Divid")) + 1;
-		console.log("realId:", realId);
-        div.id = realId;
-        dispatch(postDivisions(realId, div));
+        dispatch(postDivisions(div));
 		setDiv(initialFormState);
 	};
 	return (
@@ -38,7 +32,7 @@ const AddDivForm = (props) => {
 			</div> */}
 			<div className="org-form-group">
 				<label>id_organization</label>
-				<input type="text" name="id_organization" value={div.id_organization} onChange={handleInputChange} />
+				<input type="number" name="id_organization" value={div.id_organization} onChange={handleInputChange} />
 			</div>
 			<div className="org-form-group">
 				<label>name</label>
@@ -49,7 +43,7 @@ const AddDivForm = (props) => {
 				<input type="number" name="phone" value={div.phone} onChange={handleInputChange} />
 			</div>
 
-			<button className="button" onClick={() => setModalActive(false)}>Submit</button>
+			<button className="button" onClick={() => props.setActive(false)}>Submit</button>
 		</form>
 	);
 };

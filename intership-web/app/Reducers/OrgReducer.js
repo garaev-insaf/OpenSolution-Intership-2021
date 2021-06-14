@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 const OrgReducer = (org = [], action) => {
 	switch (action.type) {
 		case "GET_ORGS":

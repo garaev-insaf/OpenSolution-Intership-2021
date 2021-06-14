@@ -7,9 +7,7 @@ import { Modal } from "../modal";
 
 const AddEmpForm = (props) => {
     const dispatch = useDispatch();
-	const realId = 0;
     const initialFormState = {
-        id: null,
         id_division: "",
         FIO: "",
         address: "",
@@ -17,7 +15,7 @@ const AddEmpForm = (props) => {
     };
     // используем useState и передаем в качестве начального значения объект - initialFormState
     const [emp, setEmp] = useState(initialFormState);
-    const [modalActive, setModalActive] = useState();
+    // const [modalActive, setModalActive] = useState();
     const handleInputChange = (event) => {
         const { name, value } = event.currentTarget;
         setEmp({ ...emp, [name]: value });
@@ -25,18 +23,15 @@ const AddEmpForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!emp.id_division || !emp.FIO || !emp.address || !emp.position) return;
-        realId = Number(localStorage.getItem("Empid")) + 1;
-		console.log("realId:", realId);
-        emp.id = realId;
-        dispatch(postEmp(realId, emp));
+        emp.id_division = parseInt(emp.id_division);
+        dispatch(postEmp(emp));
         setEmp(initialFormState);
     };
     return (
-        <Modal active={modalActive} setActive={setModalActive}>
         <form className="orgForm" onSubmit={handleSubmit}>
             <div className="org-form-group">
 				<label>id_division</label>
-				<input type="text" name="id_division" value={emp.id_division} onChange={handleInputChange} />
+				<input type="number" name="id_division" value={emp.id_division} onChange={handleInputChange} />
 			</div>
             <div className="org-form-group">
                 <label>FIO</label>
@@ -66,9 +61,8 @@ const AddEmpForm = (props) => {
                 />
             </div>
 
-            <button type="submit" className="button" onClick={() => setModalActive(false)}>Submit</button>
+            <button className="button" onClick={() => props.setActive(false)}>Submit</button>
         </form>
-        </Modal>
     );
 };
 

@@ -7,7 +7,7 @@ import {
 	Switch,
 	Route,
 	Link,
-	NavLink,
+	NavLink,	
 	useRouteMatch,
 	useParams,
 	Redirect,
@@ -24,9 +24,6 @@ import { getEmps } from "../../Actions/MyActions";
 
 const Employee = () => {
 	let { empId } = useParams();
-	console.log("1231231");
-	console.log(empId);
-	console.log("123131");
 
 	const [appState, setAppState] = useState({
 		id: null,
@@ -43,7 +40,7 @@ const Employee = () => {
 	useEffect(() => {
 		dispatch(getEmps(empId));
 	}, [dispatch]);
-	localStorage.setItem("Empid", Number(appState.length));
+
 	return (
 		<div className="Crud">
 			<div className="NavBar">
@@ -55,9 +52,12 @@ const Employee = () => {
 					{/* добавляем таблицу: */}
 					<EmpData emp={appState} setActive={setModalActive} />
 				</div>
-				<AddEmpForm setActive={setModalActive} />
+				<Modal active={modalActive} setActive={setModalActive}>
+					<AddEmpForm setActive={setModalActive} />
+				</Modal>
 			</div>
 		</div>
+		
 	);
 };
 
